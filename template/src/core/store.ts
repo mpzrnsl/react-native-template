@@ -21,6 +21,7 @@ import {
   REHYDRATE
 } from "redux-persist";
 
+import api from "./api";
 import Constants from "./constants";
 import Env from "./env";
 import reducer from "./reducer";
@@ -39,7 +40,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    }),
+    }).concat(api.middleware),
   devTools: Env.get("ENV") === "development"
 });
 
