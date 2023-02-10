@@ -5,7 +5,6 @@
  * @format
  */
 
-import { Env } from "@core";
 import React from "react";
 import {
   SafeAreaView,
@@ -16,6 +15,7 @@ import {
   View
 } from "react-native";
 
+import { Env } from "@core";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 function App(): JSX.Element {
