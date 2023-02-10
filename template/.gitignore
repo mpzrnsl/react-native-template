@@ -67,3 +67,4 @@ env
 .env
 *.env
 .env.*
+ios/ReactNativeConfig.xcconfig
