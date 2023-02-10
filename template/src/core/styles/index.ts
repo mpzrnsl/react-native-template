@@ -13,6 +13,7 @@ import { StyleSheet } from "react-native";
 
 export { default as Colors } from "./colors";
 export { default as Typography } from "./typography";
+export * from "./theme";
 
 export default StyleSheet.create({
   container: {

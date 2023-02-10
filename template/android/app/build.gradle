@@ -4,7 +4,6 @@ apply plugin: "com.facebook.react"
 /**
  * react-native-config
  */
-
 project.ext.envConfigFiles = [
     debug: ".env.development",
     release: ".env.production",
@@ -12,6 +11,15 @@ project.ext.envConfigFiles = [
 ]
 
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+/**
+ * react-native-vector-icons
+ */
+// project.ext.vectoricons = [
+//     iconFontNames: [] // Name of the font files you want to include
+// ]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
 

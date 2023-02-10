@@ -5,6 +5,7 @@
     "paths": {
       "@core": ["src/core/index"],
       "@core/*": ["src/core/*"],
+      "@common": ["src/common/index"],
       "@test/*": ["tests/*"]
     }
   }

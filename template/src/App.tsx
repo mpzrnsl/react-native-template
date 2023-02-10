@@ -7,50 +7,48 @@
  *
  */
 
-import React, { PropsWithChildren } from "react";
-import { Text } from "react-native";
+import React from "react";
 
-import { NavigationContainer } from "@react-navigation/native";
+import { ThemeColorScheme } from "@common";
+import { ThemeProvider } from "@rneui/themed";
 import ErrorBoundary from "react-native-error-boundary";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   initialWindowMetrics,
-  SafeAreaProvider,
-  SafeAreaView
+  SafeAreaProvider
 } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { Env, Logger, persistor, store } from "@core";
-import styles from "@core/styles";
+import { Logger, persistor, store } from "@core";
+import { useLifecycleLogger } from "@core/hooks";
+import styles, { theme } from "@core/styles";
+
+import Navigation from "./Navigation";
 
 const onErrorHandler = (error: Error, stackTrace: string) => {
   Logger.extend("SYSTEM").error(error, stackTrace);
 };
 
-function Root({ children }: PropsWithChildren) {
+function App() {
+  useLifecycleLogger(App.name);
+
   return (
     <GestureHandlerRootView style={styles.container}>
-      <ErrorBoundary onError={onErrorHandler}>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-            <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-              <NavigationContainer>{children}</NavigationContainer>
-            </SafeAreaProvider>
-          </PersistGate>
-        </Provider>
-      </ErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <ThemeColorScheme>
+          <ErrorBoundary onError={onErrorHandler}>
+            <Provider store={store}>
+              <PersistGate persistor={persistor}>
+                <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+                  <Navigation />
+                </SafeAreaProvider>
+              </PersistGate>
+            </Provider>
+          </ErrorBoundary>
+        </ThemeColorScheme>
+      </ThemeProvider>
     </GestureHandlerRootView>
-  );
-}
-
-function App() {
-  return (
-    <Root>
-      <SafeAreaView>
-        <Text>{Env.get("ENV")}</Text>
-      </SafeAreaView>
-    </Root>
   );
 }
 
