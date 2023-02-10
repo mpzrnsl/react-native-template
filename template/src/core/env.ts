@@ -15,6 +15,8 @@ interface IEnv {
   hasKey(key: string): boolean;
 
   get(key: string, fallback?: string): string;
+
+  tryGet(key: string, fallback: string): string;
 }
 
 const Env: IEnv = {
@@ -40,6 +42,26 @@ const Env: IEnv = {
         );
       }
 
+      return fallback;
+    }
+
+    return value;
+  },
+
+  tryGet: function (key, fallback) {
+    if (!fallback) {
+      throw new Error(
+        `The environment variable fallback for key: ${key} is not defined.`
+      );
+    }
+
+    if (!this.hasKey(key)) {
+      return fallback;
+    }
+
+    const value = Config[key];
+
+    if (!value) {
       return fallback;
     }
 
