@@ -5,26 +5,18 @@
  * @format
  */
 
-import { Locales } from "@core/assets";
+import { Env } from "@core";
 import React from "react";
-import type { PropsWithChildren } from "react";
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
   View
 } from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions
-} from "react-native/Libraries/NewAppScreen";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
@@ -45,7 +37,9 @@ function App(): JSX.Element {
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white
-          }}></View>
+          }}>
+          <Text>{Env.get("ENV")}</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
