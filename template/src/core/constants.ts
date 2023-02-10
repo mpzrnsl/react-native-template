@@ -9,4 +9,6 @@
  *
  */
 
-export default {};
+export default {
+  PERSIST_KEY: "root"
+};

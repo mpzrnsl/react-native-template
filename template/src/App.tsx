@@ -8,42 +8,19 @@
  */
 
 import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View
-} from "react-native";
+import { Text } from "react-native";
 
-import { Env } from "@core";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { Env, persistor, store } from "@core";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === "dark";
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
-  };
-
+function App() {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? "light-content" : "dark-content"}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white
-          }}>
-          <Text>{Env.get("ENV")}</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Text>{Env.get("ENV")}</Text>
+      </PersistGate>
+    </Provider>
   );
 }
 
