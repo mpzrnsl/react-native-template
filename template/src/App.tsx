@@ -7,7 +7,7 @@
  *
  */
 
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Text } from "react-native";
 
 import { Env, Logger, persistor, store } from "@core";
@@ -19,15 +19,21 @@ const onErrorHandler = (error: Error, stackTrace: string) => {
   Logger.extend("SYSTEM").error(error, stackTrace);
 };
 
-function App() {
+function Root({ children }: PropsWithChildren) {
   return (
     <ErrorBoundary onError={onErrorHandler}>
       <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <Text>{Env.get("ENV")}</Text>
-        </PersistGate>
+        <PersistGate persistor={persistor}>{children}</PersistGate>
       </Provider>
     </ErrorBoundary>
+  );
+}
+
+function App() {
+  return (
+    <Root>
+      <Text>{Env.get("ENV")}</Text>
+    </Root>
   );
 }
 
