@@ -1,8 +1,10 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * ProjectName
  *
- * @format
+ * App
+ *
+ * Author: Phia Nasol
+ *
  */
 
 import React from "react";
