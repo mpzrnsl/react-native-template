@@ -8,6 +8,7 @@ module.exports = {
     "^\\u0000",
     "^(react$)|^(react-native$)",
     "<THIRD_PARTY_MODULES>",
+    "^@core$|^@core/(.*)$",
     "^[./]"
   ],
   importOrderBuiltinModulesToTop: true,

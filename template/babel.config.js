@@ -10,6 +10,7 @@ module.exports = {
           "@test": "./test"
         }
       }
-    ]
+    ],
+    "react-native-reanimated/plugin"
   ]
 };

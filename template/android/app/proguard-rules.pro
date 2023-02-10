@@ -11,3 +11,7 @@
 
 # react-native-config
 -keep class com.projectname.BuildConfig { *; }
+
+# react-native-reanimated
+-keep class com.swmansion.reanimated.** { *; }
+-keep class com.facebook.react.turbomodule.** { *; }
