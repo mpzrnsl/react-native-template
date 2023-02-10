@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <RNFSManager.h>
 
 @implementation AppDelegate
 
@@ -31,6 +32,12 @@
 - (BOOL)concurrentRootEnabled
 {
   return true;
+}
+
+// react-native-fs
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
+{
+  [RNFSManager setCompletionHandlerForIdentifier:identifier completionHandler:completionHandler];
 }
 
 @end
