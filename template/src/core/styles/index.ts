@@ -18,5 +18,6 @@ export * from "./theme";
 export default StyleSheet.create({
   container: {
     flex: 1
-  }
+  },
+  scrollContainer: { flexGrow: 1 }
 });
