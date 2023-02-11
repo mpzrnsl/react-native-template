@@ -12,7 +12,7 @@ import { useColorScheme } from "react-native";
 
 import { ThemeMode, useThemeMode } from "@rneui/themed";
 
-function ThemeColorScheme({ children }: PropsWithChildren) {
+const ThemeColorScheme: React.FC<PropsWithChildren> = ({ children }) => {
   const colorScheme = useColorScheme();
 
   const { setMode } = useThemeMode();
@@ -23,6 +23,6 @@ function ThemeColorScheme({ children }: PropsWithChildren) {
   }, [colorScheme]);
 
   return <>{children}</>;
-}
+};
 
 export default ThemeColorScheme;

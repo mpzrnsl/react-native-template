@@ -30,7 +30,7 @@ const onErrorHandler = (error: Error, stackTrace: string) => {
   Logger.extend("SYSTEM").error(error, stackTrace);
 };
 
-function App() {
+const App = () => {
   useLifecycleLogger(App.name);
 
   return (
@@ -50,6 +50,6 @@ function App() {
       </ThemeProvider>
     </GestureHandlerRootView>
   );
-}
+};
 
 export default App;

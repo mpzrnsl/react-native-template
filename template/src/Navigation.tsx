@@ -14,7 +14,7 @@ import { useTheme } from "@rneui/themed";
 
 import { useLifecycleLogger } from "@core/hooks";
 
-function Navigation() {
+const Navigation = () => {
   useLifecycleLogger(Navigation.name);
 
   const { theme } = useTheme();
@@ -35,6 +35,6 @@ function Navigation() {
       {/*  Navigators */}
     </NavigationContainer>
   );
-}
+};
 
 export default Navigation;
