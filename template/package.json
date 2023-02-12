@@ -14,7 +14,7 @@
     "android:production:bundle": "cd android && ./gradlew bundleRelease && cd ..",
     "android:production:assemble": "cd android && ./gradlew assembleRelease && cd ..",
     "ios": "react-native run-ios",
-    "ios:clean": "cd ios && xcodebuild clean && cd ..",
+    "ios:clean": "xattr -w com.apple.xcode.CreatedByBuildSystem true ./ios/build && cd ios && xcodebuild clean && cd ..",
     "ios:staging": "react-native run-ios --scheme \"ProjectName Staging\"",
     "ios:production": "react-native run-ios --scheme \"ProjectName Production\"",
     "lint": "eslint .",
